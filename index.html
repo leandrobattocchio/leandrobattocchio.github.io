@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leandro Battocchio | Desarrollador Web</title>
+<meta name="description" content="Portfolio de Leandro Battocchio, desarrollador web (React, Next.js, TypeScript, Node.js) y estudiante de Ingeniería en Sistemas en la UTN Rosario.">
+<meta property="og:title" content="Leandro Battocchio | Desarrollador Web">
+<meta property="og:description" content="Proyectos con React, Next.js, TypeScript, Node.js e IA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1020; --bg2:#111831; --card:#141c38; --line:#243058; --text:#e6e9f5; --muted:#9aa4c4;
+  --accent:#6ea8ff; --accent2:#a78bfa; --ok:#34d399;
+}
+:root[data-theme="light"]{
+  --bg:#f6f7fb; --bg2:#ffffff; --card:#ffffff; --line:#dfe3ef; --text:#141a2e; --muted:#5a6482;
+  --accent:#2f6fe0; --accent2:#7c4ddb; --ok:#0f9f6e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-family:'JetBrains Mono',monospace;font-weight:500;color:var(--accent)}
+.links{display:flex;gap:22px;font-size:.93rem;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.tools{display:flex;gap:8px}
+.btn-sm{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:8px;padding:6px 10px;font:600 .8rem Inter,sans-serif;cursor:pointer}
+.btn-sm:hover{border-color:var(--accent)}
+header{padding:80px 0 60px}
+.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.hello{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.95rem;margin:0 0 10px}
+h1{font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.08;margin:0 0 14px;letter-spacing:-.02em}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:1.08rem;max-width:600px;margin:0 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--line);background:var(--card);transition:.2s}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));border:0;color:#fff}
+.btn svg{width:18px;height:18px}
+.avatar{width:190px;height:190px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid var(--line);box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 12%,transparent)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--ok);margin-bottom:18px;border:1px solid color-mix(in srgb,var(--ok) 40%,transparent);padding:4px 12px;border-radius:999px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:1.7rem;margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 28px}
+.stack{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font:500 .85rem 'JetBrains Mono',monospace;padding:6px 12px;border-radius:8px;background:var(--card);border:1px solid var(--line)}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.group h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.card img{width:100%;aspect-ratio:2/1;object-fit:cover;background:var(--bg2);border-bottom:1px solid var(--line)}
+.card .body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{margin:0;font-size:1.12rem}
+.badge{font-size:.72rem;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:.06em}
+.card p{margin:0;color:var(--muted);font-size:.93rem;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:500 .72rem 'JetBrains Mono',monospace;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);padding:3px 8px;border-radius:6px}
+.actions{display:flex;gap:10px;margin-top:4px}
+.actions a{font-size:.88rem;font-weight:600;padding:7px 12px;border-radius:8px;border:1px solid var(--line)}
+.actions a:hover{border-color:var(--accent)}
+.actions a.demo{background:var(--accent);color:#fff;border-color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filters button{border:1px solid var(--line);background:transparent;color:var(--muted);padding:6px 14px;border-radius:999px;cursor:pointer;font:500 .85rem Inter,sans-serif}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.mini{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.mini .card{padding:16px;gap:8px}
+.mini .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mini h3{font-size:1rem;margin:0}
+.mini .lang{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.mini .lang i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.timeline{display:grid;gap:14px}
+.tl{display:grid;grid-template-columns:160px 1fr;gap:16px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.tl .when{color:var(--muted);font-size:.88rem;font-family:'JetBrains Mono',monospace}
+.tl h3{margin:0 0 2px;font-size:1rem}
+.tl p{margin:0;color:var(--muted);font-size:.92rem}
+.contact{text-align:center}
+.contact .cta{justify-content:center}
+footer{padding:28px 0;color:var(--muted);text-align:center;font-size:.85rem;border-top:1px solid var(--line)}
+@media (max-width:760px){
+  .links{display:none}
+  header{padding:48px 0 40px}
+  .hero{grid-template-columns:1fr;text-align:left}
+  .avatar{width:120px;height:120px;order:-1}
+  .tl{grid-template-columns:1fr;gap:4px}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="#">&lt;leandro.dev /&gt;</a>
+  <div class="links">
+    <a href="#proyectos" data-i18n="nav_projects">Proyectos</a>
+    <a href="#stack" data-i18n="nav_stack">Tecnologías</a>
+    <a href="#formacion" data-i18n="nav_edu">Formación</a>
+    <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+  </div>
+  <div class="tools">
+    <button class="btn-sm" id="langBtn" aria-label="Cambiar idioma">EN</button>
+    <button class="btn-sm" id="themeBtn" aria-label="Cambiar tema">☾</button>
+  </div>
+</div></nav>
+
+<header><div class="wrap hero">
+  <div>
+    <div class="status"><i></i><span data-i18n="status">Disponible para trabajar</span></div>
+    <p class="hello" data-i18n="hello">Hola, soy</p>
+    <h1>Leandro Battocchio<br><span data-i18n="role">Desarrollador Web</span></h1>
+    <p class="lead" data-i18n="lead">Construyo aplicaciones web con React, Next.js, TypeScript y Node.js, y me gusta integrar IA en mis proyectos. Estudio Ingeniería en Sistemas de Información en la UTN Rosario.</p>
+    <div class="cta">
+      <a class="btn primary" href="#proyectos" data-i18n="see_projects">Ver proyectos</a>
+      <a class="btn" href="https://github.com/leandrobattocchio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.300-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg> GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/leandro-battocchio/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.700v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg> LinkedIn</a>
+    </div>
+  </div>
+  <img class="avatar" src="https://avatars.githubusercontent.com/u/91095677?s=400" alt="Leandro Battocchio">
+</div></header>
+
+<section id="proyectos"><div class="wrap">
+  <h2 data-i18n="featured">Proyectos destacados</h2>
+  <p class="sub" data-i18n="featured_sub">Una selección de lo que construí, con demo online y código abierto.</p>
+  <div class="grid" id="featured"></div>
+</div></section>
+
+<section id="todos"><div class="wrap">
+  <h2 data-i18n="all">Todos los proyectos</h2>
+  <p class="sub" data-i18n="all_sub">Se cargan en vivo desde mi GitHub.</p>
+  <div class="filters" id="filters"></div>
+  <div class="mini" id="all"></div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <h2 data-i18n="stack">Tecnologías</h2>
+  <p class="sub" data-i18n="stack_sub">Lo que uso en mis proyectos.</p>
+  <div class="groups">
+    <div class="group"><h3 data-i18n="g_front">Frontend</h3><div class="stack">
+      <span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Tailwind CSS</span></div></div>
+    <div class="group"><h3 data-i18n="g_state">Estado y 3D</h3><div class="stack">
+      <span class="chip">Zustand</span><span class="chip">Redux</span><span class="chip">Context API</span><span class="chip">Three.js</span></div></div>
+    <div class="group"><h3 data-i18n="g_back">Backend y datos</h3><div class="stack">
+      <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span><span class="chip">SQL / MySQL</span><span class="chip">Firebase</span><span class="chip">Java</span><span class="chip">Spring Boot</span></div></div>
+    <div class="group"><h3 data-i18n="g_tools">Testing y herramientas</h3><div class="stack">
+      <span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">Jest</span><span class="chip">Cypress</span><span class="chip">Vite</span><span class="chip">Vercel</span><span class="chip">OpenAI API</span></div></div>
+  </div>
+</div></section>
+
+<section id="formacion"><div class="wrap">
+  <h2 data-i18n="edu">Formación</h2>
+  <p class="sub" data-i18n="edu_sub">Estudios y cursos.</p>
+  <div class="timeline">
+    <div class="tl"><div class="when" data-i18n="d_utn">2024 – actualidad</div><div><h3 data-i18n="e_utn">Ingeniería en Sistemas de Información</h3><p>Universidad Tecnológica Nacional – FR Rosario</p></div></div>
+    <div class="tl"><div class="when">2023</div><div><h3 data-i18n="e_coder">Programación Frontend</h3><p>Coderhouse</p></div></div>
+    <div class="tl"><div class="when">2021</div><div><h3 data-i18n="e_unr">Programador Web Fullstack</h3><p>Universidad Nacional de Rosario</p></div></div>
+    <div class="tl"><div class="when">2012 – 2018</div><div><h3 data-i18n="e_tec">Técnico Electromecánico</h3><p>E.E.T. N.º 466 – Rosario</p></div></div>
+  </div>
+</div></section>
+
+<section id="contacto" class="contact"><div class="wrap">
+  <h2 data-i18n="contact">¿Hablamos?</h2>
+  <p class="sub" data-i18n="contact_sub">Busco mi primera posición como desarrollador. Escribime y te respondo enseguida.</p>
+  <div class="cta">
+    <a class="btn primary" href="mailto:battocchioleandro@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg> battocchioleandro@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/leandro-battocchio/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.700v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg> LinkedIn</a>
+    <a class="btn" href="https://github.com/leandrobattocchio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.300-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg> GitHub</a>
+  </div>
+</div></section>
+
+<footer>© <span id="year"></span> Leandro Battocchio · Rosario, Argentina</footer>
+
+<script>
+const USER = 'leandrobattocchio';
+const FEATURED = [
+  { repo:'component-generator', demo:'https://component-generator.vercel.app', badge:{es:'IA',en:'AI'},
+    es:'Generador de componentes web con IA: describís lo que necesitás y genera el código en React, Vue, Svelte o JavaScript, con vista previa en vivo.',
+    en:'AI web component generator: describe what you need and get the code in React, Vue, Svelte or vanilla JS, with a live preview.',
+    tags:['Next.js','React','OpenAI API','Tailwind','Zustand'] },
+  { repo:'veruska', demo:'https://veruska.vercel.app', badge:{es:'Cliente real',en:'Client work'},
+    es:'Sitio web para Veruska, marca de moda y arte textil: catálogo con filtros por categoría, preguntas frecuentes y contacto. Diseño responsive.',
+    en:'Website for Veruska, a textile art and fashion brand: product catalog with category filters, FAQ and contact. Fully responsive.',
+    tags:['React','Vite','Tailwind','React Router'] },
+  { repo:'minecraft-cheap', demo:'https://minecraft-cheap.vercel.app', badge:{es:'3D + CI/CD',en:'3D + CI/CD'},
+    es:'Constructor 3D estilo Minecraft en el navegador, con física y texturas. Pipeline de GitHub Actions con lint, build y tests E2E en Cypress.',
+    en:'Minecraft-style 3D builder in the browser with physics and textures. GitHub Actions pipeline with lint, build and Cypress E2E tests.',
+    tags:['React Three Fiber','Three.js','Zustand','Cypress','GitHub Actions'] },
+  { repo:'notes-app', demo:'', badge:{es:'Fullstack',en:'Full-stack'},
+    es:'App de notas fullstack: API REST con Node.js, Express y MongoDB, autenticación JWT, frontend en React + Redux y tests con Jest, Supertest y Cypress.',
+    en:'Full-stack notes app: REST API with Node.js, Express and MongoDB, JWT auth, React + Redux frontend, tested with Jest, Supertest and Cypress.',
+    tags:['Node.js','Express','MongoDB','JWT','React','Redux','Jest'] },
+  { repo:'google-translate-clon', demo:'https://google-translate-clon.vercel.app', badge:{es:'IA',en:'AI'},
+    es:'Clon de Google Translate que traduce con la API de OpenAI. Hecho con Next.js y TypeScript, con detección de idioma y traducción mientras escribís.',
+    en:'Google Translate clone powered by the OpenAI API. Built with Next.js and TypeScript, with language auto-detection and translate-as-you-type.',
+    tags:['Next.js','TypeScript','OpenAI API','React'] },
+  { repo:'coder-ecommerce', demo:'https://coder-ecommerce-lemon.vercel.app', badge:{es:'Coderhouse',en:'Coderhouse'},
+    es:'E-commerce de videojuegos: catálogo con búsqueda, categorías y paginación, carrito, registro e inicio de sesión y checkout con Firebase.',
+    en:'Video game e-commerce: catalog with search, categories and pagination, shopping cart, sign-up/login and checkout with Firebase.',
+    tags:['React','Firebase','Context API','React Router','Bootstrap'] },
+];
+const ES_DESC = {"lofi-music-player": "Reproductor de música lofi con sonidos ambientales, selector de fondos y control de volumen.", "background-remover": "Quita el fondo de imágenes con IA (Cloudinary): carga arrastrando, comparación antes/después y descarga.", "chatGPT-clone": "Interfaz de chat estilo ChatGPT hecha con Next.js y la API de OpenAI.", "movie-search": "Buscador de películas con la API de OMDb y búsqueda con debounce.", "tic-tac-toe": "Ta-te-ti en React + TypeScript con marcador, sonido y cambio de idioma.", "todo-app": "Gestor de tareas estilo TodoMVC con React, TypeScript y Zustand.", "gifs": "Buscador de GIFs con la API de Giphy, tendencias y carga diferida.", "qr-generator": "Generador de códigos QR con React y configuración propia de Webpack + Babel.", "discord-bot": "Bot de Discord con comandos slash, hecho con Node.js y discord.js.", "ProyectoFinal": "Portal web de adopción de gatos con Java, Spring Boot, Spring Security y MySQL."};
+const LANG_COLORS = { JavaScript:'#f1e05a', TypeScript:'#3178c6', Java:'#b07219', HTML:'#e34c26', CSS:'#563d7c' };
+const STATIC_REPOS = [
+  ['lofi-music-player','JavaScript','https://lofi-music-five.vercel.app','Lofi music player with ambient sounds, background selector and volume controls.'],
+  ['background-remover','JavaScript','https://background-remover-gamma.vercel.app','Remove image backgrounds with AI (Cloudinary): drag-and-drop upload, before/after view and download.'],
+  ['chatGPT-clone','JavaScript','https://chat-gpt-clone-olive.vercel.app','ChatGPT-style chat interface built with Next.js and the OpenAI API.'],
+  ['movie-search','JavaScript','https://movie-search-beta-seven.vercel.app','Movie search app using the OMDb API with debounced search.'],
+  ['tic-tac-toe','TypeScript','https://tic-tac-toe-five-gilt.vercel.app','Tic-tac-toe in React + TypeScript with scoreboard, sound and EN/ES toggle.'],
+  ['todo-app','TypeScript','','TodoMVC-style task manager with React, TypeScript and Zustand.'],
+  ['gifs','JavaScript','https://gifs-omega.vercel.app','GIF search engine using the Giphy API, with trending GIFs and lazy loading.'],
+  ['qr-generator','JavaScript','','QR code generator built with React and a custom Webpack + Babel setup.'],
+  ['discord-bot','JavaScript','','Discord bot with slash commands built with Node.js and discord.js.'],
+  ['ProyectoFinal','Java','','Cat adoption web portal built with Java, Spring Boot, Spring Security and MySQL.'],
+].map(([name,language,homepage,description])=>({name,language,homepage,description,html_url:`https://github.com/${USER}/${name}`}));
+
+const I18N = {
+  es:{nav_projects:'Proyectos',nav_stack:'Tecnologías',nav_edu:'Formación',nav_contact:'Contacto',status:'Disponible para trabajar',hello:'Hola, soy',role:'Desarrollador Web',
+    lead:'Construyo aplicaciones web con React, Next.js, TypeScript y Node.js, y me gusta integrar IA en mis proyectos. Estudio Ingeniería en Sistemas de Información en la UTN Rosario.',
+    see_projects:'Ver proyectos',featured:'Proyectos destacados',featured_sub:'Una selección de lo que construí, con demo online y código abierto.',
+    all:'Todos los proyectos',all_sub:'Se cargan en vivo desde mi GitHub.',stack:'Tecnologías',stack_sub:'Lo que uso en mis proyectos.',
+    g_front:'Frontend',g_state:'Estado y 3D',g_back:'Backend y datos',g_tools:'Testing y herramientas',edu:'Formación',edu_sub:'Estudios y cursos.',
+    d_utn:'2024 – actualidad',e_utn:'Ingeniería en Sistemas de Información',e_coder:'Programación Frontend',e_unr:'Programador Web Fullstack',e_tec:'Técnico Electromecánico',
+    contact:'¿Hablamos?',contact_sub:'Busco mi primera posición como desarrollador. Escribime y te respondo enseguida.',demo:'Ver demo',code:'Código',allf:'Todos'},
+  en:{nav_projects:'Projects',nav_stack:'Stack',nav_edu:'Education',nav_contact:'Contact',status:'Open to work',hello:"Hi, I'm",role:'Web Developer',
+    lead:'I build web applications with React, Next.js, TypeScript and Node.js, and I enjoy integrating AI into my projects. Information Systems Engineering student at UTN Rosario, Argentina.',
+    see_projects:'See projects',featured:'Featured projects',featured_sub:'A selection of things I have built, with live demos and open source code.',
+    all:'All projects',all_sub:'Loaded live from my GitHub.',stack:'Tech stack',stack_sub:'What I use in my projects.',
+    g_front:'Frontend',g_state:'State & 3D',g_back:'Backend & data',g_tools:'Testing & tooling',edu:'Education',edu_sub:'Degrees and courses.',
+    d_utn:'2024 – present',e_utn:'Information Systems Engineering',e_coder:'Frontend Development',e_unr:'Full-stack Web Developer',e_tec:'Electromechanical Technician',
+    contact:"Let's talk",contact_sub:"I'm looking for my first developer role. Drop me a line and I'll get back to you quickly.",demo:'Live demo',code:'Code',allf:'All'}
+};
+let lang = 'es', repos = STATIC_REPOS, filter = 'all';
+try { lang = localStorage.getItem('lang') || (navigator.language.startsWith('es') ? 'es' : 'en'); } catch(e) {}
+const t = k => I18N[lang][k];
+const esc = s => String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fixUrl = u => !u ? '' : (u.startsWith('http') ? u : 'https://' + u);
+
+function renderFeatured(){
+  document.getElementById('featured').innerHTML = FEATURED.map(p => `
+    <article class="card">
+      <img loading="lazy" src="https://opengraph.githubassets.com/1/${USER}/${p.repo}" alt="${p.repo}">
+      <div class="body">
+        <span class="badge">${p.badge[lang]}</span>
+        <h3>${p.repo}</h3>
+        <p>${p[lang]}</p>
+        <div class="tags">${p.tags.map(x=>`<span>${x}</span>`).join('')}</div>
+        <div class="actions">
+          ${p.demo ? `<a class="demo" href="${p.demo}" target="_blank" rel="noopener">${t('demo')} ↗</a>` : ''}
+          <a href="https://github.com/${USER}/${p.repo}" target="_blank" rel="noopener">${t('code')}</a>
+        </div>
+      </div>
+    </article>`).join('');
+}
+function renderAll(){
+  const featured = new Set(FEATURED.map(f=>f.repo));
+  const list = repos.filter(r => !featured.has(r.name) && r.name !== USER && !r.fork);
+  const langs = [...new Set(list.map(r=>r.language).filter(Boolean))];
+  document.getElementById('filters').innerHTML = ['all',...langs].map(l =>
+    `<button class="${filter===l?'on':''}" data-l="${l}">${l==='all'?t('allf'):l}</button>`).join('');
+  document.querySelectorAll('#filters button').forEach(b => b.onclick = () => { filter = b.dataset.l; renderAll(); });
+  document.getElementById('all').innerHTML = list.filter(r => filter==='all' || r.language===filter).map(r => `
+    <article class="card">
+      <div class="top"><h3>${esc(r.name)}</h3>${r.language?`<span class="lang"><i style="background:${LANG_COLORS[r.language]||'#888'}"></i>${esc(r.language)}</span>`:''}</div>
+      <p>${esc(lang==='es' && ES_DESC[r.name] ? ES_DESC[r.name] : r.description)}</p>
+      <div class="actions">
+        ${r.homepage ? `<a class="demo" href="${esc(fixUrl(r.homepage))}" target="_blank" rel="noopener">${t('demo')} ↗</a>` : ''}
+        <a href="${esc(r.html_url)}" target="_blank" rel="noopener">${t('code')}</a>
+      </div>
+    </article>`).join('');
+}
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
+  document.getElementById('langBtn').textContent = lang === 'es' ? 'EN' : 'ES';
+  renderFeatured(); renderAll();
+}
+document.getElementById('langBtn').onclick = () => { lang = lang==='es'?'en':'es'; try{localStorage.setItem('lang',lang)}catch(e){} applyLang(); };
+let theme = 'dark';
+try { theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); } catch(e) {}
+function applyTheme(){ document.documentElement.dataset.theme = theme; document.getElementById('themeBtn').textContent = theme==='dark'?'☀':'☾'; }
+document.getElementById('themeBtn').onclick = () => { theme = theme==='dark'?'light':'dark'; try{localStorage.setItem('theme',theme)}catch(e){} applyTheme(); };
+document.getElementById('year').textContent = new Date().getFullYear();
+applyTheme(); applyLang();
+fetch(`https://api.github.com/users/${USER}/repos?per_page=100&sort=pushed`)
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(data => { if (Array.isArray(data) && data.length) { repos = data.map(r => ({...r, description: r.description || (STATIC_REPOS.find(s=>s.name===r.name)||{}).description})); renderAll(); } })
+  .catch(() => {});
+</script>
+</body>
+</html>
