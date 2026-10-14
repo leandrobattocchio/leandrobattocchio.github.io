@@ -258,7 +258,7 @@ function renderFeatured(){
 }
 function renderAll(){
   const featured = new Set(FEATURED.map(f=>f.repo));
-  const list = repos.filter(r => !featured.has(r.name) && r.name !== USER && !r.fork);
+  const list = repos.filter(r => !featured.has(r.name) && r.name !== USER && r.name !== USER + '.github.io' && !r.fork);
   const langs = [...new Set(list.map(r=>r.language).filter(Boolean))];
   document.getElementById('filters').innerHTML = ['all',...langs].map(l =>
     `<button class="${filter===l?'on':''}" data-l="${l}">${l==='all'?t('allf'):l}</button>`).join('');
